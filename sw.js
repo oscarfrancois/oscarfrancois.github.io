@@ -20,7 +20,7 @@ self.addEventListener('install', function(e) {
 self.addEventListener('launch', function(e) {
   console.log("launching");
   navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100]);
-}
+});
 
 /* Serve cached content when offline */
 self.addEventListener('fetch', function(e) {
