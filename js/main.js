@@ -14,7 +14,7 @@ window.onload = () => {
     message.innerHTML += "<br>bluetooth requestDevice method found"
   }
 
-  myapi = Object.keys(navigator.__proto__)
+  let myapi = Object.keys(navigator.__proto__)
   for (let i=0; i<myapi.length; i++) {
     message.innerHTML += "<br> API element: " + myapi[i]
   }
