@@ -1,35 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Hello World</title>
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="images/hello-icon-152.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="white"/>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Hello World">
-  <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
-  <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Random Hello World PWA - A Multi-Language Progressive Web App</title>
+    <meta name="description" content="Says &quot;Hello World!&quot; in a random human language, on a random background color. It's a PWA, so you can try it in your browser, and add it to your home screen.">
+
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" href="/images/manifest/icons/random-hello-world-pwa-icon-180.png">
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="stylesheet" href="/styles/normalize.css">
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
-<body class="fullscreen">
-  <div class="container">
-    <h1 class="title">Hello World3!</h1>
-    <button onclick="console.log('vibrate button clicked'); navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100]);">vibrate</button>
+
+<body>
+    <header class="toolbar" id="toolbar">
+        <h1 id="title" class="toolbar__title">Hello World</h1>
+        <div class="toolbar__actions">
+            <i id="shuffle" class="toolbar__action icon--refresh" title="Reload message"></i>
+            <a href="https://www.tecdrop.com" target="_blank" rel="noopener">
+                <i class="toolbar__action icon--info" title="App info"></i>
+            </a>
+        </div>
+    </header>
+    <main id="main">
+        <p class="message" id="message">Hello World!</p>
+    </main>
+
+    <script type="module" src="/scripts/main.js"></script>
+
     <script>
-    function geolocate() {
-      navigator.geolocation.getCurrentPosition( pos => {
-         console.log("geolocation.getCurrentPosition called")
-         console.log("pos.coords=" + pos.coords)
-       })
-    }
+        // Register service worker
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/sw.js");
+            });
+        }
     </script>
-    <button onclick="console.log('geolocate button clicked'); geolocate();">geolocate</button>
-    <h2 id="message">messages will appear here</h2>
-  </div>
-  <script src="js/main.js"></script>
 </body>
+
 </html>
